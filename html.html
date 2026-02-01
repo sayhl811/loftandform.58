@@ -1,0 +1,730 @@
+<nav class="navbar">
+    <div class="logo">
+      <div class="logo-icon">
+        <i class="fas fa-couch"></i>
+      </div>
+      <span>Удобство 58</span>
+    </div>
+
+    <div class="nav-links" id="nav-links">
+      <a href="#" class="nav-link active" data-page="home">
+        <i class="fas fa-home"></i>Главная
+      </a>
+      <a href="#" class="nav-link" data-page="catalog">
+        <i class="fas fa-th-large"></i>Каталог
+      </a>
+      <a href="#" class="nav-link" data-page="profile">
+        <i class="fas fa-user"></i>Профиль
+      </a>
+      <a href="#" class="nav-link" data-page="about">
+        <i class="fas fa-info-circle"></i>О нас
+      </a>
+      <a href="#" class="nav-link" data-page="fitting">
+        <i class="fas fa-cube"></i>3D Примерка
+      </a>
+      <a href="#" class="nav-link" data-page="configurator">
+        <i class="fas fa-sliders-h"></i>Конфигуратор
+      </a>
+      <a href="#" class="nav-link" data-page="reviews">
+        <i class="fas fa-star"></i>Отзывы
+      </a>
+      <a href="#" class="nav-link" data-page="contacts">
+        <i class="fas fa-map-marker-alt"></i>Контакты
+      </a>
+      <a href="#" class="nav-link" data-page="tracking" id="tracking-tab" style="display: none;">
+        <i class="fas fa-shipping-fast"></i>Статус заказа
+      </a>
+      <a href="#" class="nav-link" data-page="admin" id="admin-tab" style="display: none;">
+        <i class="fas fa-cog"></i>Админ
+      </a>
+    </div>
+
+    <div class="user-actions">
+      <div class="cart-icon-wrapper" onclick="toggleCart()">
+        <button class="btn btn-icon">
+          <i class="fas fa-shopping-cart"></i>
+        </button>
+        <span class="cart-count" id="cart-count">0</span>
+      </div>
+
+      <button class="theme-toggle" id="theme-toggle" onclick="toggleTheme()">
+        <i class="fas fa-moon"></i>
+      </button>
+
+      <button class="btn btn-outline" id="auth-btn" onclick="toggleAuthModal()">
+        <i class="fas fa-sign-in-alt"></i>Войти
+      </button>
+
+      <button class="mobile-menu-btn" onclick="toggleMobileMenu()">
+        <i class="fas fa-bars"></i>
+      </button>
+    </div>
+  </nav>
+
+  <!-- ОСНОВНОЙ КОНТЕНТ -->
+  <div class="container">
+    <!-- ГЛАВНАЯ СТРАНИЦА -->
+    <div class="page active" id="home">
+      <div class="page-header">
+        <h1 class="page-title">
+          <div class="page-icon">
+            <i class="fas fa-couch"></i>
+          </div>
+          <div>
+            Мебель вашей мечты
+            <div class="page-subtitle">
+              Премиальная мебель по индивидуальным размерам с гарантией 10 лет
+            </div>
+          </div>
+        </h1>
+      </div>
+
+      <div class="card mb-40">
+        <div style="text-align: center; padding: 50px 30px;">
+          <h2 style="margin-bottom: 20px;">Создайте свой идеальный интерьер</h2>
+          <p style="font-size: 18px; color: var(--text-secondary); max-width: 800px; margin: 0 auto 30px;">
+            От эскиза до готового изделия - мы создаем уникальные интерьерные решения, которые отражают ваш стиль и обеспечивают максимальный комфорт.
+          </p>
+          <div style="display: flex; gap: 20px; justify-content: center; flex-wrap: wrap;">
+            <button class="btn btn-primary" onclick="switchPage('catalog')" style="padding: 16px 40px;">
+              <i class="fas fa-box-open"></i>Перейти в каталог
+            </button>
+            <button class="btn btn-outline" onclick="switchPage('fitting')" style="padding: 16px 40px;">
+              <i class="fas fa-cube"></i>3D Примерка
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <div class="products-grid" style="grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));">
+        <div class="card">
+          <div style="width: 64px; height: 64px; background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%); border-radius: var(--radius); display: flex; align-items: center; justify-content: center; margin-bottom: 24px; color: white; font-size: 28px;">
+            <i class="fas fa-ruler-combined"></i>
+          </div>
+          <h3>Индивидуальные размеры</h3>
+          <p>Изготовим мебель по вашим точным размерам с учетом особенностей помещения и пожеланий.</p>
+        </div>
+
+        <div class="card">
+          <div style="width: 64px; height: 64px; background: linear-gradient(135deg, var(--secondary) 0%, var(--secondary-dark) 100%); border-radius: var(--radius); display: flex; align-items: center; justify-content: center; margin-bottom: 24px; color: white; font-size: 28px;">
+            <i class="fas fa-truck"></i>
+          </div>
+          <h3>Бесплатная доставка</h3>
+          <p>Доставка при заказе от 50 000 ₽. Аккуратная доставка и профессиональная сборка нашими специалистами.</p>
+        </div>
+
+        <div class="card">
+          <div style="width: 64px; height: 64px; background: linear-gradient(135deg, var(--accent) 0%, var(--primary) 100%); border-radius: var(--radius); display: flex; align-items: center; justify-content: center; margin-bottom: 24px; color: white; font-size: 28px;">
+            <i class="fas fa-shield-alt"></i>
+          </div>
+          <h3>Гарантия 10 лет</h3>
+          <p>На всю нашу продукцию предоставляется расширенная гарантия. Используем только качественные материалы.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- КАТАЛОГ -->
+    <div class="page" id="catalog">
+      <div class="page-header">
+        <h1 class="page-title">
+          <div class="page-icon">
+            <i class="fas fa-th-large"></i>
+          </div>
+          <div>
+            Каталог мебели
+            <div class="page-subtitle">
+              Более 40 моделей в 10 категориях
+            </div>
+          </div>
+        </h1>
+      </div>
+
+      <div class="catalog-filters">
+        <h3 style="margin-bottom: 20px;">Категории</h3>
+        <div class="filter-tags">
+          <button class="filter-tag active" data-category="all">Все товары</button>
+          <button class="filter-tag" data-category="table">Столы</button>
+          <button class="filter-tag" data-category="chair">Стулья</button>
+          <button class="filter-tag" data-category="wardrobe">Шкафы</button>
+          <button class="filter-tag" data-category="bed">Кровати</button>
+          <button class="filter-tag" data-category="shelf">Полки</button>
+          <button class="filter-tag" data-category="kitchen">Кухни</button>
+          <button class="filter-tag" data-category="sofa">Диваны</button>
+          <button class="filter-tag" data-category="cabinet">Тумбы</button>
+          <button class="filter-tag" data-category="dresser">Комоды</button>
+        </div>
+      </div>
+
+      <div id="products-container" class="products-grid">
+        <!-- Товары будут загружены через JavaScript -->
+      </div>
+    </div>
+
+    <!-- ПРОФИЛЬ -->
+    <div class="page" id="profile">
+      <div class="page-header">
+        <h1 class="page-title">
+          <div class="page-icon">
+            <i class="fas fa-user"></i>
+          </div>
+          <div>
+            Мой профиль
+            <div class="page-subtitle" id="profile-subtitle">
+              Не авторизован
+            </div>
+          </div>
+        </h1>
+      </div>
+
+      <div class="profile-container">
+        <div class="profile-sidebar">
+          <div class="user-avatar" id="profile-avatar">
+            <i class="fas fa-user"></i>
+          </div>
+
+          <div style="text-align: center; margin-bottom: 30px;">
+            <h2 id="profile-name">Гость</h2>
+            <p id="profile-email" style="color: var(--gray);">Для входа нажмите "Войти"</p>
+          </div>
+
+          <div id="loyalty-card" class="loyalty-card hidden">
+            <h3 style="color: white; margin-bottom: 15px;" id="loyalty-title">Бронзовый уровень</h3>
+            <div class="progress-bar" style="height: 8px; background: rgba(255,255,255,0.3); border-radius: 4px; margin: 20px 0;">
+              <div id="loyalty-progress" style="height: 100%; background: white; border-radius: 4px; width: 30%;"></div>
+            </div>
+            <p style="font-size: 14px; margin: 10px 0;">Скидка: <span id="discount-percent" style="font-weight: 700;">0%</span></p>
+            <p style="font-size: 12px; opacity: 0.9;">До следующего уровня: <span id="next-level">100 000 ₽</span></p>
+          </div>
+
+          <div style="margin-top: 30px;">
+            <button class="btn btn-primary" id="logout-btn" onclick="logout()" style="width: 100%; display: none;">
+              <i class="fas fa-sign-out-alt"></i>Выйти
+            </button>
+            <button class="btn btn-outline" onclick="toggleAuthModal()" id="login-profile-btn" style="width: 100%;">
+              <i class="fas fa-sign-in-alt"></i>Войти / Зарегистрироваться
+            </button>
+          </div>
+        </div>
+
+        <div class="profile-content">
+          <h3 style="margin-bottom: 25px;">История заказов</h3>
+          <div id="orders-list" style="text-align: center; padding: 40px 20px; color: var(--gray);">
+            <i class="fas fa-box-open" style="font-size: 60px; margin-bottom: 20px; opacity: 0.3;"></i>
+            <p>Для просмотра истории заказов необходимо авторизоваться</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- О НАС -->
+    <div class="page" id="about">
+      <div class="page-header">
+        <h1 class="page-title">
+          <div class="page-icon">
+            <i class="fas fa-info-circle"></i>
+          </div>
+          <div>
+            О компании
+            <div class="page-subtitle">
+              Премиальная мебель с 2005 года
+            </div>
+          </div>
+        </h1>
+      </div>
+
+      <div class="card mb-30">
+        <h2 style="margin-bottom: 20px;">Наша история</h2>
+        <p style="font-size: 17px; line-height: 1.7;">
+          "Удобство 58" - это семейная компания, основанная в 2005 году. Начиная с небольшой мастерской по производству кухонной мебели, мы выросли в одного из лидеров рынка премиальной мебели в России.
+        </p>
+        <p style="font-size: 17px; line-height: 1.7; margin-top: 20px;">
+          Сегодня наша фабрика площадью 10 000 м² оснащена современным итальянским оборудованием, а в коллективе работают более 150 профессионалов своего дела.
+        </p>
+      </div>
+
+      <div class="products-grid" style="grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));">
+        <div class="card">
+          <div style="width: 64px; height: 64px; background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%); border-radius: var(--radius); display: flex; align-items: center; justify-content: center; margin-bottom: 24px; color: white; font-size: 28px;">
+            <i class="fas fa-industry"></i>
+          </div>
+          <h3>Наше производство</h3>
+          <p>Используем только экологичные материалы от проверенных поставщиков из Европы и России.</p>
+        </div>
+
+        <div class="card">
+          <div style="width: 64px; height: 64px; background: linear-gradient(135deg, var(--secondary) 0%, var(--secondary-dark) 100%); border-radius: var(--radius); display: flex; align-items: center; justify-content: center; margin-bottom: 24px; color: white; font-size: 28px;">
+            <i class="fas fa-users"></i>
+          </div>
+          <h3>Наша команда</h3>
+          <p>Дизайнеры, технологи и мастера с опытом работы от 10 лет. Каждый специалист - эксперт в своей области.</p>
+        </div>
+
+        <div class="card">
+          <div style="width: 64px; height: 64px; background: linear-gradient(135deg, var(--accent) 0%, var(--primary) 100%); border-radius: var(--radius); display: flex; align-items: center; justify-content: center; margin-bottom: 24px; color: white; font-size: 28px;">
+            <i class="fas fa-award"></i>
+          </div>
+          <h3>Наши ценности</h3>
+          <p>Качество, индивидуальный подход, экологичность, инновации и долгосрочные отношения с клиентами.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- 3D ПРИМЕРКА -->
+    <div class="page" id="fitting">
+      <div class="page-header">
+        <h1 class="page-title">
+          <div class="page-icon">
+            <i class="fas fa-cube"></i>
+          </div>
+          <div>
+            3D Планировщик комнаты
+            <div class="page-subtitle">
+              Спроектируйте свой интерьер в реальном времени
+            </div>
+          </div>
+        </h1>
+      </div>
+
+      <div class="fitting-container">
+        <div class="room-controls">
+          <h3 style="margin-bottom: 25px;">Параметры комнаты</h3>
+
+          <div class="room-control-group">
+            <label class="control-label">
+              Длина комнаты
+              <span id="length-value">4 м</span>
+            </label>
+            <input type="range" class="range-input" id="room-length" min="2" max="10" value="4" step="0.5">
+            <div class="range-values">
+              <span>2 м</span>
+              <span>10 м</span>
+            </div>
+          </div>
+
+          <div class="room-control-group">
+            <label class="control-label">
+              Ширина комнаты
+              <span id="width-value">3 м</span>
+            </label>
+            <input type="range" class="range-input" id="room-width" min="2" max="8" value="3" step="0.5">
+            <div class="range-values">
+              <span>2 м</span>
+              <span>8 м</span>
+            </div>
+          </div>
+
+          <div class="room-control-group">
+            <label class="control-label">
+              Высота потолков
+              <span id="height-value">2.5 м</span>
+            </label>
+            <input type="range" class="range-input" id="room-height" min="2" max="4" value="2.5" step="0.1">
+            <div class="range-values">
+              <span>2 м</span>
+              <span>4 м</span>
+            </div>
+          </div>
+
+          <div class="room-control-group">
+            <label class="control-label">Цвет стен</label>
+            <input type="color" id="wall-color" value="#f5f5f5" style="width: 100%; height: 40px; border-radius: var(--radius); border: 1px solid var(--border-color);">
+          </div>
+
+          <div class="room-control-group">
+            <label class="control-label">Цвет пола</label>
+            <input type="color" id="floor-color" value="#8B4513" style="width: 100%; height: 40px; border-radius: var(--radius); border: 1px solid var(--border-color);">
+          </div>
+
+          <h3 style="margin: 30px 0 20px;">Добавить мебель</h3>
+          <div class="furniture-selector" id="furniture-selector">
+            <!-- Мебель будет загружена через JavaScript -->
+          </div>
+
+          <button class="btn btn-primary" onclick="addSelectedFurniture()" style="width: 100%; margin-top: 25px; padding: 14px;">
+            <i class="fas fa-plus"></i>Добавить в комнату
+          </button>
+
+          <button class="btn btn-outline" onclick="resetRoom()" style="width: 100%; margin-top: 12px; padding: 14px;">
+            <i class="fas fa-redo"></i>Сбросить комнату
+          </button>
+
+          <div style="margin-top: 30px; padding: 20px; background: var(--light); border-radius: var(--radius);">
+            <p style="margin: 0; font-size: 14px; color: var(--text-secondary);">
+              <i class="fas fa-lightbulb"></i> <strong>Совет:</strong> Перетаскивайте мебель для расстановки. Удерживайте Shift для изменения размера.
+            </p>
+          </div>
+        </div>
+
+        <div class="room-visualization">
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
+            <h3>3D Вид комнаты</h3>
+            <div style="display: flex; gap: 10px;">
+              <button class="btn btn-icon" onclick="rotateView('left')">
+                <i class="fas fa-undo"></i>
+              </button>
+              <button class="btn btn-icon" onclick="rotateView('right')">
+                <i class="fas fa-redo"></i>
+              </button>
+              <button class="btn btn-icon" onclick="resetView()">
+                <i class="fas fa-sync-alt"></i>
+              </button>
+            </div>
+          </div>
+
+          <div class="room-3d-container">
+            <div id="room-3d">
+              <!-- 3D комната будет создана здесь -->
+            </div>
+          </div>
+
+          <div style="margin-top: 20px; display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px;" id="recommended-furniture">
+            <!-- Рекомендованные товары -->
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- КОНФИГУРАТОР -->
+    <div class="page" id="configurator">
+      <div class="page-header">
+        <h1 class="page-title">
+          <div class="page-icon">
+            <i class="fas fa-sliders-h"></i>
+          </div>
+          <div>
+            Конфигуратор мебели
+            <div class="page-subtitle">
+              Создайте мебель своей мечты за 5 шагов
+            </div>
+          </div>
+        </h1>
+      </div>
+
+      <div class="card">
+        <div class="configurator-steps">
+          <div class="step active" id="step-1">1</div>
+          <div class="step" id="step-2">2</div>
+          <div class="step" id="step-3">3</div>
+          <div class="step" id="step-4">4</div>
+          <div class="step" id="step-5">5</div>
+        </div>
+
+        <div id="configurator-content" class="step-content" style="min-height: 400px; padding: 30px 0;">
+          <!-- Контент конфигуратора -->
+        </div>
+
+        <div style="display: flex; justify-content: space-between; margin-top: 30px;">
+          <button id="prev-step" class="btn btn-outline" style="display: none;" onclick="prevStep()">
+            <i class="fas fa-arrow-left"></i>Назад
+          </button>
+          <button id="next-step" class="btn btn-primary" onclick="nextStep()">
+            Далее<i class="fas fa-arrow-right"></i>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- ОТЗЫВЫ -->
+    <div class="page" id="reviews">
+      <div class="page-header">
+        <h1 class="page-title">
+          <div class="page-icon">
+            <i class="fas fa-star"></i>
+          </div>
+          <div>
+            Отзывы клиентов
+            <div class="page-subtitle">
+              На основе 156 отзывов
+            </div>
+          </div>
+        </h1>
+      </div>
+
+      <div class="card mb-30">
+        <div style="display: flex; justify-content: space-between; align-items: center; padding: 30px;">
+          <div style="text-align: center;">
+            <div style="font-size: 60px; font-weight: 700; color: var(--secondary);">4.8</div>
+            <div class="stars">★★★★★</div>
+            <p style="color: var(--gray); margin-top: 10px;">Средняя оценка</p>
+          </div>
+
+          <button class="btn btn-secondary" id="add-review-btn" onclick="showReviewModal()" style="display: none;">
+            <i class="fas fa-plus"></i>Добавить отзыв
+          </button>
+        </div>
+      </div>
+
+      <div class="reviews-grid" id="reviews-list">
+        <!-- Отзывы будут загружены здесь -->
+      </div>
+    </div>
+
+    <!-- КОНТАКТЫ -->
+    <div class="page" id="contacts">
+      <div class="page-header">
+        <h1 class="page-title">
+          <div class="page-icon">
+            <i class="fas fa-map-marker-alt"></i>
+          </div>
+          <div>
+            Контакты
+            <div class="page-subtitle">
+              Всегда на связи
+            </div>
+          </div>
+        </h1>
+      </div>
+
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; margin-bottom: 40px;">
+        <div class="card">
+          <h3 style="margin-bottom: 25px;">Наши контакты</h3>
+          <div style="display: grid; gap: 25px;">
+            <div style="display: flex; align-items: center; gap: 16px;">
+              <div style="width: 48px; height: 48px; background: var(--light); border-radius: var(--radius); display: flex; align-items: center; justify-content: center; color: var(--primary);">
+                <i class="fas fa-phone"></i>
+              </div>
+              <div>
+                <p style="font-weight: 600; color: var(--text-color);">Телефон</p>
+                <p style="color: var(--gray);">+7 (800) 555-58-58</p>
+              </div>
+            </div>
+
+            <div style="display: flex; align-items: center; gap: 16px;">
+              <div style="width: 48px; height: 48px; background: var(--light); border-radius: var(--radius); display: flex; align-items: center; justify-content: center; color: var(--primary);">
+                <i class="fas fa-envelope"></i>
+              </div>
+              <div>
+                <p style="font-weight: 600; color: var(--text-color);">Email</p>
+                <p style="color: var(--gray);">info@udobstvo58.ru</p>
+              </div>
+            </div>
+
+            <div style="display: flex; align-items: center; gap: 16px;">
+              <div style="width: 48px; height: 48px; background: var(--light); border-radius: var(--radius); display: flex; align-items: center; justify-content: center; color: var(--primary);">
+                <i class="fas fa-map-marker-alt"></i>
+              </div>
+              <div>
+                <p style="font-weight: 600; color: var(--text-color);">Адрес</p>
+                <p style="color: var(--gray);">г. Москва, ул. Мебельная, д. 58</p>
+              </div>
+            </div>
+
+            <div style="display: flex; align-items: center; gap: 16px;">
+              <div style="width: 48px; height: 48px; background: var(--light); border-radius: var(--radius); display: flex; align-items: center; justify-content: center; color: var(--primary);">
+                <i class="fas fa-clock"></i>
+              </div>
+              <div>
+                <p style="font-weight: 600; color: var(--text-color);">Часы работы</p>
+                <p style="color: var(--gray);">Пн-Пт: 9:00-21:00<br>Сб-Вс: 10:00-20:00</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div>
+          <h3 style="margin-bottom: 20px;">На карте</h3>
+          <div id="map"></div>
+        </div>
+      </div>
+
+      <div class="card" style="text-align: center;">
+        <h2 style="margin-bottom: 20px;">Мы будем вас ждать!</h2>
+        <p style="font-size: 17px; color: var(--text-secondary); max-width: 800px; margin: 0 auto;">
+          Приходите к нам в гости, чтобы увидеть и прочувствовать качество нашей мебели. Наши консультанты помогут подобрать идеальное решение для вашего дома или офиса.
+        </p>
+      </div>
+    </div>
+
+    <!-- СТАТУС ЗАКАЗА -->
+    <div class="page" id="tracking">
+      <div class="page-header">
+        <h1 class="page-title">
+          <div class="page-icon">
+            <i class="fas fa-shipping-fast"></i>
+          </div>
+          <div>
+            Статус заказа
+            <div class="page-subtitle">
+              Отслеживание ваших заказов
+            </div>
+          </div>
+        </h1>
+      </div>
+
+      <div id="order-tracking">
+        <!-- Информация о заказах -->
+      </div>
+    </div>
+
+    <!-- АДМИН ПАНЕЛЬ -->
+    <div class="page" id="admin">
+      <div class="page-header">
+        <h1 class="page-title">
+          <div class="page-icon">
+            <i class="fas fa-cog"></i>
+          </div>
+          <div>
+            Административная панель
+            <div class="page-subtitle">
+              Управление системой
+            </div>
+          </div>
+        </h1>
+      </div>
+
+      <div class="catalog-filters" style="margin-bottom: 30px;">
+        <div class="filter-tags" id="admin-tabs">
+          <button class="filter-tag active" data-tab="products">
+            <i class="fas fa-box"></i>Товары
+          </button>
+          <button class="filter-tag" data-tab="orders">
+            <i class="fas fa-shopping-cart"></i>Заказы
+          </button>
+          <button class="filter-tag" data-tab="reviews-admin">
+            <i class="fas fa-star"></i>Отзывы
+          </button>
+          <button class="filter-tag" data-tab="users">
+            <i class="fas fa-users"></i>Пользователи
+          </button>
+        </div>
+      </div>
+
+      <div id="admin-content">
+        <!-- Контент админ панели -->
+      </div>
+    </div>
+  </div>
+
+  <!-- КОРЗИНА -->
+  <div class="cart-overlay" id="cart-overlay" onclick="toggleCart()"></div>
+  <div class="cart-sidebar" id="cart-sidebar">
+    <div class="cart-header">
+      <h2 class="cart-title">
+        <i class="fas fa-shopping-cart"></i>
+        Корзина
+      </h2>
+      <button class="btn btn-icon" onclick="toggleCart()">
+        <i class="fas fa-times"></i>
+      </button>
+    </div>
+
+    <div class="cart-content" id="cart-content">
+      <div class="cart-empty">
+        <i class="fas fa-shopping-cart cart-empty-icon"></i>
+        <h3>Корзина пуста</h3>
+        <p>Добавьте товары из каталога</p>
+      </div>
+    </div>
+
+    <div class="cart-footer">
+      <div class="cart-total">
+        <span>Итого:</span>
+        <span class="total-amount" id="cart-total">0 ₽</span>
+      </div>
+      <button class="btn btn-primary" onclick="checkout()" style="width: 100%; padding: 16px;">
+        <i class="fas fa-credit-card"></i>Оформить заказ
+      </button>
+    </div>
+  </div>
+
+  <!-- МОДАЛЬНОЕ ОКНО АВТОРИЗАЦИИ -->
+  <div class="modal-overlay" id="auth-modal">
+    <div class="modal">
+      <button class="modal-close" onclick="toggleAuthModal()">
+        <i class="fas fa-times"></i>
+      </button>
+
+      <div id="auth-forms">
+        <div id="login-form">
+          <h2 class="modal-title">Вход в аккаунт</h2>
+
+          <div style="margin-bottom: 25px;">
+            <label style="display: block; margin-bottom: 8px; font-weight: 600; color: var(--text-color);">Email</label>
+            <input type="email" id="login-email" placeholder="Введите ваш email" style="width: 100%; padding: 14px 16px; border: 1px solid var(--border-color); border-radius: var(--radius); font-size: 15px;">
+          </div>
+
+          <div style="margin-bottom: 25px;">
+            <label style="display: block; margin-bottom: 8px; font-weight: 600; color: var(--text-color);">Пароль</label>
+            <input type="password" id="login-password" placeholder="Введите ваш пароль" style="width: 100%; padding: 14px 16px; border: 1px solid var(--border-color); border-radius: var(--radius); font-size: 15px;">
+          </div>
+
+          <button class="btn btn-primary" onclick="login()" style="width: 100%; padding: 16px;">
+            <i class="fas fa-sign-in-alt"></i>Войти
+          </button>
+
+          <div style="text-align: center; margin-top: 25px;">
+            <p style="color: var(--gray);">
+              Нет аккаунта?
+              <a href="#" onclick="showRegisterForm()" style="color: var(--primary); font-weight: 600; text-decoration: none; cursor: pointer;">
+                Зарегистрироваться
+              </a>
+            </p>
+          </div>
+        </div>
+
+        <div id="register-form" style="display: none;">
+          <h2 class="modal-title">Регистрация</h2>
+
+          <div style="margin-bottom: 20px;">
+            <label style="display: block; margin-bottom: 8px; font-weight: 600; color: var(--text-color);">ФИО</label>
+            <input type="text" id="register-name" placeholder="Иванов Иван Иванович" style="width: 100%; padding: 14px 16px; border: 1px solid var(--border-color); border-radius: var(--radius); font-size: 15px;">
+          </div>
+
+          <div style="margin-bottom: 20px;">
+            <label style="display: block; margin-bottom: 8px; font-weight: 600; color: var(--text-color);">Email</label>
+            <input type="email" id="register-email" placeholder="example@mail.ru" style="width: 100%; padding: 14px 16px; border: 1px solid var(--border-color); border-radius: var(--radius); font-size: 15px;">
+          </div>
+
+          <div style="margin-bottom: 25px;">
+            <label style="display: block; margin-bottom: 8px; font-weight: 600; color: var(--text-color);">Пароль</label>
+            <input type="password" id="register-password" placeholder="Придумайте пароль" style="width: 100%; padding: 14px 16px; border: 1px solid var(--border-color); border-radius: var(--radius); font-size: 15px;">
+          </div>
+
+          <button class="btn btn-secondary" onclick="register()" style="width: 100%; padding: 16px;">
+            <i class="fas fa-user-plus"></i>Зарегистрироваться
+          </button>
+
+          <div style="text-align: center; margin-top: 25px;">
+            <p style="color: var(--gray);">
+              Уже есть аккаунт?
+              <a href="#" onclick="showLoginForm()" style="color: var(--primary); font-weight: 600; text-decoration: none; cursor: pointer;">
+                Войти
+              </a>
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- МОДАЛЬНОЕ ОКНО ОТЗЫВА -->
+  <div class="modal-overlay" id="review-modal">
+    <div class="modal">
+      <button class="modal-close" onclick="closeReviewModal()">
+        <i class="fas fa-times"></i>
+      </button>
+
+      <h2 class="modal-title">Добавить отзыв</h2>
+
+      <div style="margin-bottom: 25px; text-align: center;">
+        <label style="display: block; margin-bottom: 10px; font-weight: 600; color: var(--text-color);">Оценка</label>
+        <div id="rating-stars" style="font-size: 36px; color: #ddd; cursor: pointer;">
+          <i class="fas fa-star" data-rating="1"></i>
+          <i class="fas fa-star" data-rating="2"></i>
+          <i class="fas fa-star" data-rating="3"></i>
+          <i class="fas fa-star" data-rating="4"></i>
+          <i class="fas fa-star" data-rating="5"></i>
+        </div>
+        <input type="hidden" id="review-rating" value="5">
+      </div>
+
+      <div style="margin-bottom: 30px;">
+        <label style="display: block; margin-bottom: 8px; font-weight: 600; color: var(--text-color);">Текст отзыва</label>
+        <textarea id="review-text" rows="5" placeholder="Поделитесь впечатлениями о покупке..." style="width: 100%; padding: 14px 16px; border: 1px solid var(--border-color); border-radius: var(--radius); font-size: 15px; resize: vertical;"></textarea>
+      </div>
+
+      <button class="btn btn-secondary" onclick="submitReview()" style="width: 100%; padding: 16px;">
+        <i class="fas fa-paper-plane"></i>Опубликовать отзыв
+      </button>
+    </div>
+  </div>
